@@ -1,0 +1,94 @@
+<mat-toolbar class="navbar bg" style="position: fixed;top: 0;width: 100%;z-index: 100; color: #fff;">
+    <h3 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif , cursive; color: #fff;"routerLink="/dashboard"><mat-icon>theaters</mat-icon>MovieZONE</h3>
+    <mat-form-field class="inputText" style="width: 25%;margin-left: 350px;color: rgb(255, 255, 255);" >
+      <input type="text" matInput placeholder="Search" [(ngModel)]="movieName">
+    </mat-form-field>
+    <button style="margin-right: 500px;" mat-icon-button (click)="searchMovie()" routerLink="/search"><mat-icon>search</mat-icon></button>
+    <button mat-icon-button [matMenuTriggerFor]="menu" matTooltip="Manage Profile"><mat-icon>person_outline</mat-icon></button>
+  </mat-toolbar>
+  <div style=" background-image: linear-gradient(to left, rgba(25, 34, 48, 100), rgb(0, 0, 0));padding-top: 8px; padding-bottom: 8px;margin-top: 60px;">
+    <a routerLink="/chipbar" (click)="ActionSearch()" style="text-decoration: none; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;padding: 1em; color: aliceblue;margin-left: 10px;">Action</a>&nbsp; &nbsp;
+    <a routerLink="/chipbar" (click)="AdvSearch()" style="text-decoration: none; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;padding: 1em; color: aliceblue;">Adventure</a>&nbsp; &nbsp;
+    <a routerLink="/chipbar" (click)="ComedySearch()" style="text-decoration: none; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;padding: 1em; color: aliceblue;">Comedy</a>&nbsp; &nbsp;
+    <a routerLink="/chipbar" (click)="DramaSearch()" style="text-decoration: none; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;padding: 1em; color: aliceblue;">Drama</a>&nbsp; &nbsp;
+    <a routerLink="/chipbar" (click)="FictionSearch()" style="text-decoration: none; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;padding: 1em; color: aliceblue;">Sci-Fi</a>&nbsp; &nbsp;
+    <a routerLink="/chipbar" (click)="ThrillerSearch()" style="text-decoration: none; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;padding: 1em; color: aliceblue;">Thriller</a>
+  </div>
+  
+  <div class='slider-wrapper'>
+    <input checked id='slide1' name='slides' type='radio'>
+    <input id='slide2' name='slides' type='radio'>
+    <input id='slide3' name='slides' type='radio'>
+    <input id='slide4' name='slides' type='radio'>
+    <input id='slide5' name='slides' type='radio'>
+    <div class='slider-arrow-nav'>
+      <label class='nav-arrow prev' for='slide1'></label>
+      <label class='nav-arrow prev' for='slide2'></label>
+      <label class='nav-arrow prev' for='slide3'></label>
+      <label class='nav-arrow prev' for='slide4'></label>
+      <label class='nav-arrow prev' for='slide5'></label>
+    </div>
+    <div class='slider-arrow-nav'>
+      <label class='nav-arrow next' for='slide1'></label>
+      <label class='nav-arrow next' for='slide2'></label>
+      <label class='nav-arrow next' for='slide3'></label>
+      <label class='nav-arrow next' for='slide4'></label>
+      <label class='nav-arrow next' for='slide5'></label>
+    </div>
+    <div class='slider-nav'>
+      <label class='nav-button' for='slide1'></label>
+      <label class='nav-button' for='slide2'></label>
+      <label class='nav-button' for='slide3'></label>
+      <label class='nav-button' for='slide4'></label>
+      <label class='nav-button' for='slide5'></label>
+    </div>
+    <div class='slider-content'>
+      <div class='slide slide1'>
+        <img src='../assets/seetharamam.jpg'>
+      </div>
+      <div class='slide slide2'>
+        <img src='../assets/Maverik.jpg'>
+      </div>
+      <div class='slide slide3'>
+        <img src='../assets/PSX_20220901_153144.jpg'>
+      </div>
+      <div class='slide slide4'>
+        <img src='../assets/bulletTrain.jpg'>
+      </div>
+      <div class='slide slide5'>
+        <img src='../assets/mini.jpg'>
+      </div>
+    </div>
+  </div>
+  
+  <div class="bg-img">
+    <mat-grid-list cols="5" style="padding-top: 18px;">
+      <mat-grid-tile *ngFor="let metadata of res.items">
+          <img routerLink="/moviedetails" class="nik" mat-card-image src="{{metadata.image}}" style="height: 250px; width: 180px;margin-left: auto; margin-right: auto;position: absolute;" alt="Poster"(click)="navigateToCart(metadata)">
+          <button style="position: relative;" style="color:#fff" mat-icon-button class="likebutton" aria-label="Example icon-button with a heart icon"(click)="LoginFirstOrAddToCart(metadata)">
+           <mat-icon>favorite</mat-icon>
+           </button>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+
+  <div style="padding-top: 30px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; color: #fff;background-image: linear-gradient(to left, rgba(77, 152, 238, 100), rgb(0, 0, 0));">
+    <img src="../assets/MZlogo.png" alt="moviezone" height="120px" width="120px" style="margin-top: 10px; margin-left: 20px;float: left;">
+    <p style="float: left;"><b>MovieZONE</b> <br><br>1250 24th Street, N.W.<br> Washington, DC 20037</p>
+    <section style="float: left;">
+    <p style="margin-left: 50px;"><b>CONNECT WITH US</b></p>
+    <ul class="options2">
+        <li style="margin-left: 10px; margin-top: 20px;"><img src="../assets/Facebook.png" alt="" height="30px" width="30px"></li>
+        <li style="margin-left: 30px; margin-top: 20px;"><img src="../assets/Twitter.png" alt=""height="30px" width="30px"></li>
+        <li style="margin-left: 30px; margin-top: 20px;"><img src="../assets/Instagram.png" alt=""height="30px" width="30px"></li>
+        <li style="margin-left: 30px; margin-top: 20px;"><img src="../assets/Youtube.png" alt=""height="30px" width="30px"></li>
+        <li style="margin-left: 30px; margin-top: 20px;"><img src="../assets/RSS.png" alt=""height="30px" width="30px"></li>
+    </ul>
+    </section>
+    <p style="margin-left:700px;margin-top:60px ; font-size: large;">© 2022 STAR. All Rights Reserved. HBO, Home Box Office and all related channel and programming logos are service marks of, and all related programming visuals and elements are the property of, Home Box Office, Inc. All rights reserved.</p>
+    <br>    
+</div>  
+  <mat-menu #menu="matMenu" style="background-image: linear-gradient(to left, rgba(25, 34, 48, 100), rgb(0, 0, 0));">
+    <button mat-menu-item class="iconimg" routerLink="/watchlist"><mat-icon class="iconimg">favorite</mat-icon>My Stuff</button>
+    <button mat-menu-item class="iconimg" (click)="logOut()"><mat-icon class="iconimg">logout</mat-icon>Logout</button>
+  </mat-menu>
